@@ -1,0 +1,43 @@
+function integral = MojaParabola(fun, a, b, npanel)
+    %szerokość podprzedziałów
+    h = (b - a) ./ npanel;
+    %tablica wyników
+    integral = zeros(size(npanel));
+    
+        %Suma krańców przedziału całkowania
+        sum0 = fun(a) +fun(b);
+        %Suma nieparzystych
+        sumNP = 0;
+        %Suma parzystych
+        sumP = 0;
+    for i = 1 : size(npanel, 2)
+        x = a + (0:npanel(i)) * h(i);
+        y = fun(x);
+        if rem(i,2)==0
+        sumP = S_2+fun(x);
+        else
+        sumNP = S_1+fun(x);
+         end
+        %wynik całki
+        integral(i) = h(i) / 3 * (sum0 + 2*sumP + 4*sumNP);
+    end
+end
+
+
+% function integral = MojaParabola(fun, a, b, npanel)
+% for(i = 1 : size(npanel, 2))
+% h = abs(a-b)/(npanel(i));
+% y = 0;
+% for(j=1:1:npanel(i))
+%     x = a + (j-1)*h;
+%     if(j==1 || j==npanel(i))
+%     y = y + fun(x);
+%     elseif(rem(j,2)==0)
+%     y = y + 4*fun(x);
+%     elseif(rem(j,2)==1)
+%     y = y + 2*fun(x);
+%     end
+% end
+% integral(i)=h/3*y;
+% end
+% end

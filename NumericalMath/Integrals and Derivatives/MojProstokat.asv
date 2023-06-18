@@ -1,0 +1,15 @@
+% function wynik = MojProstokat(fun,a,b,npanel)
+%     dx = (b - a) / npanel; % Szerokość podprzedziału
+%     x = a + dx/2 : dx : b - dx/2; % Punkty środkowe podprzedziałów
+%     y = fun(x); % Wartości funkcji w punktach x
+%     wynik = sum(y) * dx; % Całkowita suma wartości * szerokość podprzedziału
+% end
+function integral = MojProstokat(fun, a, b, npanel)
+    %szerokość przedziału
+    h = (b-a)/ npanel;
+    integral = 0;
+    suma=0
+    for iter=0:(npanel-1)
+       suma=suma+fun((a + h/2) + iter*h ))
+    end
+end
